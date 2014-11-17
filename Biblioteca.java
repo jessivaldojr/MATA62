@@ -1,10 +1,13 @@
+import java.util.Collection;
+import java.util.Vector;
+
 public class Biblioteca {
 
 	private static Biblioteca biblioteca;
 
-	private Usuario[] usuario;
+	private Collection<Usuario> usuario = new Vector<Usuario>();
 
-	private Material[] material;
+	private Collection<Material> material = new Vector<Material>();
 
 	private Biblioteca() {
 		//Singleton
@@ -20,7 +23,29 @@ public class Biblioteca {
 		
 	}
 	
+	public void addAlunoGraduacao(String nome, int id) {
+		
+		usuario.add(new AlunoGraduacao(nome, id));
+		
+	}
 	
+	public void addAlunoPosGraduacao(String nome, int id) {
+		
+		usuario.add(new AlunoPosGraduacao(nome, id));
+		
+	}
+	
+	public void addProfessor(String nome, int id) {
+		
+		usuario.add(new Professor(nome, id));
+		
+	}
+	
+	public void addMaterial() {
+		
+		material.add(new Material());
+		
+	}
 	
 	public String emprestimo() {
 		return null;
