@@ -4,14 +4,10 @@ public class DVD extends Material {
 
 	private short regiao;
 
-	private short anoPublicacao; 
-
-	public DVD(int codigo, String[] autor, short regiao, 
-											short anoPublicacao) {
-		super(codigo);
+	public DVD(int codigo, String titulo, String[] autor, short regiao, int anoPublicacao) {
+		super(codigo, titulo, anoPublicacao);
 		this.autor = autor;
 		this.regiao = regiao;
-		this.anoPublicacao = anoPublicacao;
 	}
 
 	public String[] getAutor() {
@@ -21,10 +17,5 @@ public class DVD extends Material {
 	public short getRegiao() {
 		return regiao;
 	}
-
-	public short getAnoPublicacao() {
-		return anoPublicacao;
-	}
-	
 
 }

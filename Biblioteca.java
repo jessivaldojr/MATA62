@@ -1,4 +1,5 @@
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Vector;
 
 public class Biblioteca {
@@ -41,15 +42,60 @@ public class Biblioteca {
 		
 	}
 	
-	public void addLivro(int codigo) {
+	public void addCD(int codigo, String titulo, String autor, String[] faixa, int ano) {
 		
-		material.add(new Livro(codigo, ));
+		material.add(new CD(codigo, titulo, autor, faixa, ano));
 		
 	}
 	
-	public boolean addExemplar() {
+	public void addDVD(int codigo, String titulo, String[] autor, short regiao, int ano) {
 		
-		//TODO
+		material.add(new DVD( codigo, titulo,  autor, regiao, ano));
+		
+	}
+	
+	public void addLivro(int codigo, String titulo, String editora, String[] autores, String edicao, int ano) {
+		
+		material.add(new Livro(codigo, titulo, editora, autores, edicao, ano));
+		
+	}
+	
+	public void addRevista(int codigo, String titulo, String edicao, String mesPublicacao, int ano) {
+		
+		material.add(new Revista(codigo, titulo, edicao, mesPublicacao, ano));
+		
+	}
+	
+	public boolean addExemplar(int codigoMaterial, short codigoExemplar) {
+		
+		Material aux = getMaterialPeloCodigo(codigoMaterial);
+		
+		if(aux != null){
+			
+			aux.addExemplar(codigoExemplar);
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public Material getMaterialPeloCodigo(int codigo) {
+		
+		Iterator<Material> iterator = material.iterator();
+		
+		while(iterator.hasNext()){
+			
+			Material cada = (Material) iterator.next();
+			
+			if(cada.getCodigo() == codigo) {
+				return cada;
+				
+			}
+		}
+		
+		return null;
 		
 	}
 	

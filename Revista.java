@@ -1,21 +1,21 @@
 public class Revista extends Material {
 
 	private String edicao;
+	
+	private String mes;
 
-	private short anoPublicacao;
-
-	public Revista(int codigo,String edicao, short anoPublicacao) {
-		super(codigo);
+	public Revista(int codigo, String titulo, String edicao, String mesPublicacao, int anoPublicacao) {
+		super(codigo, titulo, anoPublicacao);
 		this.edicao = edicao;
-		this.anoPublicacao = anoPublicacao;
+		this.mes = mesPublicacao;
 	}
 
 	public String getEdicao() {
 		return edicao;
 	}
 
-	public short getAnoPublicacao() {
-		return anoPublicacao;
+	public String getMesPublicacao() {
+		return mes;
 	}
 	
 }

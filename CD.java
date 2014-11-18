@@ -1,29 +1,20 @@
 public class CD extends Material {
 
-	private String[] autor;
+	private String autor;
 
 	private String[] faixa;
 
-	private short anoPublicacao;
-
-	public CD(int codigo, String[] autor, String[] faixa, 
-											short anoPublicacao) {
-		super(codigo);
+	public CD(int codigo, String titulo, String autor, String[] faixa, int anoPublicacao) {
+		super(codigo, titulo, anoPublicacao);
 		this.autor = autor;
 		this.faixa = faixa;
-		this.anoPublicacao = anoPublicacao;
 	}
 
-	public String[] getAutor() {
+	public String getAutor() {
 		return autor;
 	}
 
 	public String[] getFaixa() {
 		return faixa;
-	}
-
-	public short getAnoPublicacao() {
-		return anoPublicacao;
-	}
-	
+	}	
 }
