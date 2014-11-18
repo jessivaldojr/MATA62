@@ -37,6 +37,10 @@ public class Material {
 		
 		exemplares.add(new Exemplar(codigo));
 	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
 
 	public int getCodigo() {
 		return codigo;
