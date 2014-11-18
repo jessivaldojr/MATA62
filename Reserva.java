@@ -8,4 +8,25 @@ public class Reserva {
 
 	private Material material;
 
+	public Reserva(Date data, Usuario usuario, Material material) {
+		this.data = data;
+		this.usuario = usuario;
+		this.material = material;
+		this.usuario.incluirReserva(this);
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public Material getMaterial() {
+		return material;
+	}	
+	
+	
+	
 }

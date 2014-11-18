@@ -6,7 +6,9 @@ public class DVD extends Material {
 
 	private short anoPublicacao; 
 
-	public DVD(String[] autor, short regiao, short anoPublicacao) {
+	public DVD(int codigo, String[] autor, short regiao, 
+											short anoPublicacao) {
+		super(codigo);
 		this.autor = autor;
 		this.regiao = regiao;
 		this.anoPublicacao = anoPublicacao;

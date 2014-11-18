@@ -6,7 +6,9 @@ public class CD extends Material {
 
 	private short anoPublicacao;
 
-	public CD(String[] autor, String[] faixa, short anoPublicacao) {
+	public CD(int codigo, String[] autor, String[] faixa, 
+											short anoPublicacao) {
+		super(codigo);
 		this.autor = autor;
 		this.faixa = faixa;
 		this.anoPublicacao = anoPublicacao;

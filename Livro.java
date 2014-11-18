@@ -8,7 +8,9 @@ public class Livro extends Material {
 
 	private short ano;
 
-	public Livro(String editora, String autor, String edicao, short ano) {
+	public Livro(int codigo, String editora, String autor, 
+										String edicao, short ano) {
+		super(codigo);
 		this.editora = editora;
 		this.autor = autor;
 		this.edicao = edicao;

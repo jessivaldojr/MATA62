@@ -21,10 +21,6 @@ public abstract class Usuario {
 		return false;
 	}
 
-	public abstract Date calculaDataDevolucao(Date dataEmprestimo);
-
-	public abstract boolean emprestimoPermitido(Exemplar e);
-
 	public void incluirReserva(Reserva r) {
 
 	}
@@ -33,4 +29,16 @@ public abstract class Usuario {
 
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public abstract Date calculaDataDevolucao(Date dataEmprestimo);
+
+	public abstract boolean emprestimoPermitido(Exemplar e);
+	
 }

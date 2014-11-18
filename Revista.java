@@ -4,7 +4,8 @@ public class Revista extends Material {
 
 	private short anoPublicacao;
 
-	public Revista(String edicao, short anoPublicacao) {
+	public Revista(int codigo,String edicao, short anoPublicacao) {
+		super(codigo);
 		this.edicao = edicao;
 		this.anoPublicacao = anoPublicacao;
 	}

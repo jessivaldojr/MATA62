@@ -41,9 +41,15 @@ public class Biblioteca {
 		
 	}
 	
-	public void addMaterial() {
+	public void addLivro(int codigo) {
 		
-		material.add(new Material());
+		material.add(new Livro(codigo, ));
+		
+	}
+	
+	public boolean addExemplar() {
+		
+		//TODO
 		
 	}
 	
