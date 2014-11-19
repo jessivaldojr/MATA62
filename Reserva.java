@@ -27,6 +27,8 @@ public class Reserva {
 		return material;
 	}	
 	
-	
+	public int getCodigoMaterial() {
+		return material.getCodigo();
+	}	
 	
 }

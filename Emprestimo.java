@@ -16,10 +16,11 @@ public abstract class Emprestimo {
 			Usuario usuario, Exemplar exemplar) {
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+		this.dataDevolucao = null;
 		this.usuario = usuario;
 		this.exemplar = exemplar;
 	}
-
+	
 	public Date getDataEmprestimo() {
 		return dataEmprestimo;
 	}
@@ -38,6 +39,10 @@ public abstract class Emprestimo {
 
 	public Exemplar getExemplar() {
 		return exemplar;
+	}
+	
+	public int getCodigoExemplar() {
+		return exemplar.getCodigo();
 	}
 
 	public void setDataDevolucao(Date dataDevolucao) {

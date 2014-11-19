@@ -1,5 +1,6 @@
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Vector;
 
 public class Material {
@@ -28,14 +29,30 @@ public class Material {
 
 	public void removerReserva(Reserva r) {
 
-			//TODO
-		
+			//TODO	
 		
 	}
 	
 	public void addExemplar(short codigo){
 		
 		exemplares.add(new Exemplar(codigo));
+	}
+	
+	public Exemplar getExemplarPeloCodigo(int codigo) {
+		
+		Iterator<Exemplar> iterator = exemplares.iterator();
+		
+		while(iterator.hasNext()){
+			
+			Exemplar cada = (Exemplar) iterator.next();
+			
+			if(cada.getCodigo() == codigo) {
+				return cada;
+				
+			}
+		}
+		
+		return null;
 	}
 	
 	public String getTitulo() {
