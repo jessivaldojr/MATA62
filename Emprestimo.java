@@ -36,6 +36,10 @@ public abstract class Emprestimo {
 	public Usuario getUsuario() {
 		return usuario;
 	}
+	
+	public String getNomeUsuario() {
+		return usuario.getNome();
+	}
 
 	public Exemplar getExemplar() {
 		return exemplar;

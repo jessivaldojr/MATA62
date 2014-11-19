@@ -31,4 +31,8 @@ public class Reserva {
 		return material.getCodigo();
 	}	
 	
+	public String getNomeUsuario() {
+		return usuario.getNome();
+	}
+	
 }

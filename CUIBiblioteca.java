@@ -17,11 +17,14 @@ public class CUIBiblioteca {
 
 
 	
-	private void executaComando(String arg) {
+	private String executaComando(String c, String[] a) {
 		
-		comando = (Comando) comandos.get(arg);
+		comando = (Comando) comandos.get(c);
 		
-		comando.executa(parametros);
+		if(comando != null)
+			return comando.executa(a);
+		
+		return "Comando Inválido" + System.getProperty("line,separator");
 		
 	}
 	
@@ -47,27 +50,28 @@ public class CUIBiblioteca {
 	}
 	
 	private void initBiblioteca() {
+		
 		String[] autores0 = {"Ian Sommervile"};
 		biblioteca.addLivro(100,"Engenharia de Software", "Addison Wesley",autores0, "6a", 2000);
-		biblioteca.addExemplar(100,(short) 1;
-		biblioteca.addExemplar(100,(short) 2 );
+		biblioteca.addExemplar(100,(short) 1);
+		biblioteca.addExemplar(100,(short) 2);
 		
 		String[] autores = {"Grady Booch", "James Rumbaugh", "Ivar Jacobson"};
 		biblioteca.addLivro(101,"UML - Guia do Usuário", "Campus", autores ,  "7a", 2000);
-		biblioteca.addExemplar(101, (short) 3 );
+		biblioteca.addExemplar(101, (short) 3);
 		
 		
 		biblioteca.addRevista(200,"IEEE Transactions on Software Engineering", "53", "Setembro",  2006);
-		biblioteca.addExemplar(200, (short) 4 );
+		biblioteca.addExemplar(200, (short) 4);
 		
 		biblioteca.addRevista(201,"IEEE Transactions on Software Engineering", "54", "Outubro", 2006);
-		biblioteca.addExemplar(201, (short) 5 );
+		biblioteca.addExemplar(201, (short) 5);
 		
 		
 		String[] faixas = {"Rehab", "You Know I'm No Good", "Me & Mr Jones"};
 		biblioteca.addCD(300, "Back to Black", "Amy Winehouse", faixas, 2006);
-		biblioteca.addExemplar(300, (short) 6 );
-		biblioteca.addExemplar(300, (short) 7 );
+		biblioteca.addExemplar(300, (short) 6);
+		biblioteca.addExemplar(300, (short) 7);
 		
 		String[] faixas1 = {"Longe", "Invejoso", "Envelhecer"};
 		biblioteca.addCD(301, "Iê Iê Iê", "Arnaldo Antunes", faixas1, 2009);
@@ -79,7 +83,6 @@ public class CUIBiblioteca {
 		
 		String[] autores2 = {"William Hurt", "Tim Blake Nelson"};
 		biblioteca.addDVD(401, "Incredible Hulk", autores2, (short) 4, 2008);
-		
 		
 	}
 	

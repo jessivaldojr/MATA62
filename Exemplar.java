@@ -21,10 +21,26 @@ public class Exemplar {
 		return status;
 	}
 
-	public Emprestimo getEmprestimo() {
-		return emprestimo;
+	public String getStatus() {
+		if (status)
+			return "Disponível";
+		return "Emprestado";
+	}
+	
+	public String getNomeUsuario() {
+		if (status)
+			return null;
+		return emprestimo.getNomeUsuario();
+	}
+	 
+	public String getDataEmprestimo() {
+		return emprestimo.getDataEmprestimo().toString();
 	}
 
+	public String getDataDevolucaoPrevista() {
+		return emprestimo.getDataDevolucaoPrevista().toString();
+	}
+	
 	public Material getMaterial() {
 		return material;
 	}

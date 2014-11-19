@@ -115,7 +115,26 @@ public class Biblioteca {
 		return null;
 	}
 
-	public String consultaMaterial() {
+	public String consultaMaterial(int codigo) {
+		
+		final String fimDeLinha = System.getProperty("line.separator");
+		
+		String consulta = "Consulta de Material" + fimDeLinha;
+		Material m = getMaterialPeloCodigo(codigo);	
+		
+		if (m != null) {
+			
+			consulta = "Título: " + m.getTitulo() + fimDeLinha;
+				
+			consulta += "Usuários com reservas:" + fimDeLinha;
+			consulta += m.listagemUsuariosComReservas();
+						
+			consulta += "Exemplares:" +fimDeLinha;
+			consulta += m.listagemExemplares() + fimDeLinha;
+			
+			return consulta;
+		}
+		
 		return null;
 	}
 

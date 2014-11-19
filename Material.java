@@ -10,8 +10,10 @@ public class Material {
 	private String titulo;
 	
 	private int ano;
+	
+	private int numeroDeReservas;
 
-	private Collection<Reserva> reserva = new Vector<Reserva>();
+	private Collection<Reserva> reservas = new Vector<Reserva>();
 	
 	private Collection<Exemplar> exemplares = new Vector<Exemplar>();
 	
@@ -19,11 +21,13 @@ public class Material {
 		this.codigo = codigo;
 		this.titulo = titulo;
 		this.ano = ano;
+		this.numeroDeReservas = 0;
 	}
 
 	public void incluirReserva(Date data, Usuario u ) {
 
-		reserva.add(new Reserva(data,u,this));
+		reservas.add(new Reserva(data,u,this));
+		numeroDeReservas++;
 		
 	}
 
@@ -53,6 +57,56 @@ public class Material {
 		}
 		
 		return null;
+	}
+	
+	public String listagemUsuariosComReservas() {
+		
+		final String fimDeLinha = System.getProperty("line.separator");
+		String lista = "";
+		
+		if (numeroDeReservas>0) {
+			
+			Iterator<Reserva> iterator = reservas.iterator();
+			Reserva cada;
+			
+			while( iterator.hasNext() ) {
+				
+				cada = (Reserva) iterator.next();
+				lista += cada.getNomeUsuario() + fimDeLinha;
+				
+			}
+			
+		}
+		else {
+			lista += "Não existem reservas cadastradas para este Material" + fimDeLinha;
+		}
+		
+		
+		
+		return lista;		
+	}
+	
+	public String listagemExemplares() {
+		
+		final String fimDeLinha = System.getProperty("line.separator");
+		String lista = "";
+		
+		Iterator<Exemplar> iterator = exemplares.iterator();
+		Exemplar cada;
+		
+		while( iterator.hasNext() ) {
+			
+			cada = (Exemplar) iterator.next();
+			lista += cada.getStatus() + fimDeLinha;
+			if(!cada.isStatus()) {
+				lista += "Usuario: " + cada.getNomeUsuario() + fimDeLinha;
+				lista += "Data do Emprestimo: " + cada.getDataEmprestimo() + fimDeLinha;
+				lista += "Data de Devolução Prevista: " + cada.getDataDevolucaoPrevista() + fimDeLinha;
+			}
+			
+		}
+		
+		return lista;
 	}
 	
 	public String getTitulo() {

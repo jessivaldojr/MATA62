@@ -8,9 +8,18 @@ public class ComandoConsultaMaterial implements Comando {
 	}
 
 
-	public String executa(String[] parametros) {
-		//TODO
-		return null;
+	public String executa(String[] arg) {
+		
+		int c = Integer.getInteger(arg[0]);
+		String r = biblioteca.consultaMaterial(c);
+		
+		String erro = "Código do material inválido" + System.getProperty("line.separator"); 
+		
+		if(r == null) 
+			return erro;
+		
+		return r;
+		
 	}
 
 }
