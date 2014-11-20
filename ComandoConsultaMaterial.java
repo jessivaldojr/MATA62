@@ -10,15 +10,15 @@ public class ComandoConsultaMaterial implements Comando {
 
 	public String executa(String[] arg) {
 		
-		int c = Integer.getInteger(arg[0]);
-		String r = biblioteca.consultaMaterial(c);
+		if(arg.length == 1) {
 		
-		String erro = "Código do material inválido" + System.getProperty("line.separator"); 
+			int c = Integer.getInteger(arg[0]);
+			
+			return biblioteca.consultaMaterial(c);
+			
+		}
 		
-		if(r == null) 
-			return erro;
-		
-		return r;
+		return "Erro! Número inválido de argumentos" + System.getProperty("line.separator");
 		
 	}
 

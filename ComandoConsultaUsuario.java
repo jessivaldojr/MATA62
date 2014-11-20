@@ -10,15 +10,15 @@ public class ComandoConsultaUsuario implements Comando {
 
 	public String executa(String[] arg) {
 		
-		int c = Integer.getInteger(arg[0]);
-		String r = biblioteca.consultaUsuario(c);
+		if(arg.length == 1) {
+			
+			int c = Integer.getInteger(arg[0]);
 		
-		String erro = "Código do material inválido" + System.getProperty("line.separator"); 
+			return biblioteca.consultaUsuario(c);
+			
+		}
 		
-		if(r == null) 
-			return erro;
-		
-		return r;
+		return "Erro! Número inválido de argumentos" + System.getProperty("line.separator");	
 	}
 
 }

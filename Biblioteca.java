@@ -1,4 +1,5 @@
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -6,10 +7,12 @@ public class Biblioteca {
 
 	private static Biblioteca biblioteca;
 
-	private Collection<Usuario> usuario = new Vector<Usuario>();
+	private Collection<Usuario> usuarios = new Vector<Usuario>();
 
-	private Collection<Material> material = new Vector<Material>();
+	private Collection<Material> materiais = new Vector<Material>();
 
+	private final String fimDeLinha = System.getProperty("line.separator");
+	
 	private Biblioteca() {
 		//Singleton
 	}
@@ -24,66 +27,40 @@ public class Biblioteca {
 		
 	}
 	
-	public void addAlunoGraduacao(String nome, int id) {
-		
-		usuario.add(new AlunoGraduacao(nome, id));
-		
-	}
-	
-	public void addAlunoPosGraduacao(String nome, int id) {
-		
-		usuario.add(new AlunoPosGraduacao(nome, id));
-		
-	}
-	
-	public void addProfessor(String nome, int id) {
-		
-		usuario.add(new Professor(nome, id));
-		
+	public void addUsuario(String nome, int id, ClasseDeUsuario c) {	
+		usuarios.add(new Usuario(nome, id, c));
 	}
 	
 	public void addCD(int codigo, String titulo, String autor, String[] faixa, int ano) {
-		
-		material.add(new CD(codigo, titulo, autor, faixa, ano));
-		
+		materiais.add(new CD(codigo, titulo, autor, faixa, ano));
 	}
 	
 	public void addDVD(int codigo, String titulo, String[] autor, short regiao, int ano) {
-		
-		material.add(new DVD( codigo, titulo,  autor, regiao, ano));
-		
+		materiais.add(new DVD( codigo, titulo,  autor, regiao, ano));
 	}
 	
 	public void addLivro(int codigo, String titulo, String editora, String[] autores, String edicao, int ano) {
-		
-		material.add(new Livro(codigo, titulo, editora, autores, edicao, ano));
-		
+		materiais.add(new Livro(codigo, titulo, editora, autores, edicao, ano));
 	}
 	
 	public void addRevista(int codigo, String titulo, String edicao, String mesPublicacao, int ano) {
-		
-		material.add(new Revista(codigo, titulo, edicao, mesPublicacao, ano));
-		
+		materiais.add(new Revista(codigo, titulo, edicao, mesPublicacao, ano));
 	}
 	
 	public boolean addExemplar(int codigoMaterial, short codigoExemplar) {
-		
 		Material aux = getMaterialPeloCodigo(codigoMaterial);
-		
+	
 		if(aux != null){
-			
 			aux.addExemplar(codigoExemplar);
 			return true;
-			
 		}
-		
-		return false;
-		
+	
+		return false;	
 	}
 	
 	public Material getMaterialPeloCodigo(int codigo) {
 		
-		Iterator<Material> iterator = material.iterator();
+		Iterator<Material> iterator = materiais.iterator();
 		
 		while(iterator.hasNext()) {
 			
@@ -96,13 +73,12 @@ public class Biblioteca {
 			}
 		}
 		
-		return null;
-		
+		return null;	
 	}
 	
 	public Usuario getUsuarioPeloCodigo(int codigo) {
 		
-		Iterator<Usuario> iterator = usuario.iterator();
+		Iterator<Usuario> iterator = usuarios.iterator();
 		
 		while(iterator.hasNext()) {
 			
@@ -115,17 +91,29 @@ public class Biblioteca {
 			}
 		}
 		
-		return null;
-		
+		return null;	
  	}
 	
-	public String emprestimo() {
-		return null;
+	public String emprestimo(int codigoUsuario, int codigoMaterial) {
+				
+		Usuario usuario = getUsuarioPeloCodigo(codigoUsuario);
+		
+		Material material = getMaterialPeloCodigo(codigoMaterial);
+		
+		if(usuario == null) {
+			
+			return "Usuário inexistente." + fimDeLinha;
+		}
+		
+		if(material == null) {
+			
+			return "Material inexistente." + fimDeLinha;
+		}
+		
+		return usuario.realizaEmprestimo(material);
 	}
 
 	public String devolucao(int codigoUsuario, int codigoMaterial) {
-		
-		final String fimDeLinha = System.getProperty("line.separator");
 		
 		Usuario user = getUsuarioPeloCodigo(codigoUsuario);
 		
@@ -146,17 +134,39 @@ public class Biblioteca {
 		
 	}
 
-	public String consulta() {
-		return null;
-	}
-
-	public String reserva() {
-		return null;
+	public String reserva(int codigoUsuario, int codigoMaterial) {
+		
+		String mensagem;
+		
+		Usuario usuario = getUsuarioPeloCodigo(codigoUsuario);
+		
+		Material material = getMaterialPeloCodigo(codigoMaterial);
+		
+		if(usuario == null) {
+			
+			return "Usuário inexistente." + fimDeLinha;
+		}
+		
+		if(usuario.getTotalReservas() == 3) {
+			return "Erro! Usuário: " + usuario.getNome() + " já atingiu o número limite de " +
+																"3 reservas" + fimDeLinha; 
+		}
+		
+		mensagem = "Usuário: " + usuario.getNome() + fimDeLinha;
+		
+		if(material == null) {
+			
+			return "Material inexistente." + fimDeLinha;
+		}
+		
+		mensagem += "Material: " + material.getTitulo() + fimDeLinha;
+		
+		material.novaReserva(new Date(System.currentTimeMillis()), usuario);
+		
+		return "Reserva realizada com sucesso!" + fimDeLinha + mensagem;
 	}
 
 	public String consultaMaterial(int codigo) {
-		
-		final String fimDeLinha = System.getProperty("line.separator");
 		
 		String consulta = "Consulta de Material" + fimDeLinha;
 		Material m = getMaterialPeloCodigo(codigo);	
@@ -174,13 +184,11 @@ public class Biblioteca {
 			return consulta;
 		}
 		
-		return null;
+		return "Código do material inválido" + System.getProperty("line.separator");
 	}
 
 	public String consultaUsuario(int codigo) {
-		
-		final String fimDeLinha = System.getProperty("line.separator");
-		
+
 		String consulta = "Consulta de Usuário" + fimDeLinha;
 		Usuario user = getUsuarioPeloCodigo(codigo);
 		
@@ -196,12 +204,8 @@ public class Biblioteca {
  			
 		}
 		
-		
-		return null;
+		return "Erro! Código do usuário inválido" + fimDeLinha;
 	}
 
-	public static Biblioteca obterInstancia() {
-		return null;
-	}
 
 }

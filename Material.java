@@ -24,7 +24,7 @@ public abstract class Material {
 		this.numeroDeReservas = 0;
 	}
 
-	public void incluirReserva(Date data, Usuario u ) {
+	public void novaReserva(Date data, Usuario u ) {
 
 		reservas.add(new Reserva(data,u,this));
 		numeroDeReservas++;
@@ -32,14 +32,32 @@ public abstract class Material {
 	}
 
 	public void removerReserva(Reserva r) {
-
-			//TODO	
-		
+			reservas.remove(r);
+			numeroDeReservas--;
 	}
 	
 	public void addExemplar(short codigo){
-		
 		exemplares.add(new Exemplar(codigo));
+	}
+	
+	public boolean exemplaresSemReserva() {
+		return (numeroDeReservas < exemplares.size());
+	}
+	
+	public boolean exemplaresDisponivelParaEmprestimo() {
+		
+		Iterator<Exemplar> iterator = exemplares.iterator();
+		
+		while(iterator.hasNext()){
+			
+			Exemplar cada = (Exemplar) iterator.next();
+			
+			if(cada.isStatus()) {
+				return true;		
+			}
+		}
+		
+		return false;
 	}
 	
 	public Exemplar getExemplarPeloCodigo(int codigo) {
@@ -107,6 +125,23 @@ public abstract class Material {
 		}
 		
 		return lista;
+	}
+	
+	public Exemplar getExemplarDisponivel() {
+		
+		Iterator<Exemplar> iterator = exemplares.iterator();
+		Exemplar cada;
+		
+		while( iterator.hasNext() ) {
+			
+			cada = (Exemplar) iterator.next();
+			if(cada.isStatus()) {
+				return cada;
+			}
+			
+		}
+		
+		return null;
 	}
 	
 	public String getTitulo() {

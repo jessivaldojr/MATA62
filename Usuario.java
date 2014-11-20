@@ -3,27 +3,26 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.imageio.spi.RegisterableService;
+public class Usuario {
 
-public abstract class Usuario {
-
+	private final String fimDeLinha = System.getProperty("line.separator");
+	
 	private String nome;
 
 	private int id;
 
+	private ClasseDeUsuario u;
+	
 	private Collection<Reserva> reservas = new Vector<Reserva>();
 
-	private Collection<Emprestimo> emprestimosEmAberto = new Vector<Emprestimo>();
+	protected Collection<Emprestimo> emprestimosEmAberto = new Vector<Emprestimo>();
 	
 	private Collection<Emprestimo> emprestimosFinalizados = new Vector<Emprestimo>();
 	
-	public Usuario(String nome, int id) {
+	public Usuario(String nome, int id, ClasseDeUsuario u) {
 		this.nome = nome;
 		this.id = id;
-	}
-
-	public boolean emDebito() {
-		return false;
+		this.u = u;
 	}
 
 	public void incluirReserva(Reserva r) {
@@ -42,6 +41,18 @@ public abstract class Usuario {
 		return id;
 	}
 
+	public int getTotalReservas() {
+		return reservas.size();
+	}
+	
+	public int getTotalEmprestimosEmAberto() {
+		return emprestimosEmAberto.size();
+	}
+	
+	public void addEmprestimo(Emprestimo e) {
+		emprestimosEmAberto.add(e);
+	}
+	
 	public Emprestimo getEmprestimoPeloCodigoExemplar(int codigo) {
 		
 		Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
@@ -57,7 +68,6 @@ public abstract class Usuario {
 		}
 		
 		return null;
-		
 	}
 	
 	public Emprestimo getEmprestimoPeloCodigoMaterial(int codigo) {
@@ -74,8 +84,7 @@ public abstract class Usuario {
 			}
 		}
 		
-		return null;
-		
+		return null;	
 	}
 	
 	public Reserva getReservaPeloCodigoMaterial(int codigo) {
@@ -88,17 +97,14 @@ public abstract class Usuario {
 			
 			if(cada.getCodigoMaterial() == codigo) {
 				return cada;
-				
 			}
 		}
 		
 		return null;
-		
 	}
 	
 	public String listagemReservas() {
 		
-		final String fimDeLinha = System.getProperty("line.separator");
 		String lista = "";
 		
 		if(reservas.isEmpty()) {
@@ -123,7 +129,6 @@ public abstract class Usuario {
 	
 	public String listagemEmprestimos() {
 		
-		final String fimDeLinha = System.getProperty("line.separator");
 		String lista = "";
 		
 		if (emprestimosFinalizados.isEmpty() && emprestimosEmAberto.isEmpty()) {
@@ -177,15 +182,14 @@ public abstract class Usuario {
 	
 	public String devolucao(int codigo) {
 		
-		final String fimDeLinha = System.getProperty("line.separator");
-		
 		Emprestimo emprestimo = getEmprestimoPeloCodigoMaterial(codigo);
 		
 		if(emprestimo != null) {
 			
 			emprestimosEmAberto.remove(emprestimo);
 			
-			emprestimo.setDataDevolucao(new Date());
+			emprestimo.setDataDevolucao(new Date(System.currentTimeMillis()));
+			
 			emprestimo.devolverExemplar();
 			
 			emprestimosFinalizados.add(emprestimo);
@@ -200,8 +204,44 @@ public abstract class Usuario {
 		
 	}
 	
-	public abstract Date calculaDataDevolucao(Date dataEmprestimo);
-
-	public abstract boolean emprestimoPermitido(Exemplar e);
+	public boolean estaDevedor() {
+		Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
+		Emprestimo cada;
+		
+		while( iterator.hasNext() ) {
+			
+			cada = (Emprestimo) iterator.next();
+			if(cada.getDataDevolucaoPrevista().before(new Date(System.currentTimeMillis()))) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	
+	public String realizaEmprestimo(Material m) {
+		
+		if(!m.exemplaresDisponivelParaEmprestimo()) {
+			return "Não foi possível realizar o empréstimo. " + m.getTitulo() + ": Não há exemplares disponíveis."
+																				+ fimDeLinha;
+		}
+		
+		return u.realizaEmprestimo(m, this);
+	}
+
+	public boolean possuiReserva( Material m) {
+		
+		Iterator<Reserva> iterator = reservas.iterator();
+		Reserva cada;
+		
+		while( iterator.hasNext() ) {
+			
+			cada = (Reserva) iterator.next();
+			if(cada.comparaMaterial(m)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

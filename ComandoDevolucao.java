@@ -8,16 +8,14 @@ public class ComandoDevolucao implements Comando {
 
 	public String executa(String[] arg) {
 		
-		int codUsuario = Integer.getInteger(arg[0]);
-		int codMaterial = Integer.getInteger(arg[1]);
-		String r = biblioteca.devolucao(codUsuario, codMaterial);
+		if(arg.length == 2) {
+			int codUsuario = Integer.getInteger(arg[0]);
+			int codMaterial = Integer.getInteger(arg[1]);
+			
+			return biblioteca.devolucao(codUsuario, codMaterial);
+		}
 		
-		String erro = "Código do material inválido" + System.getProperty("line.separator"); 
-		
-		if(r == null) 
-			return erro;
-		
-		return r;
+		return "Erro! Número inválido de argumentos" + System.getProperty("line.separator");
 	}
 
 }

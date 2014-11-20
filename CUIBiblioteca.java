@@ -17,12 +17,13 @@ public class CUIBiblioteca {
 
 
 	
-	private String executaComando(String c, String[] a) {
+	private String executaComando(String[] c) {
 		
-		comando = (Comando) comandos.get(c);
+		comando = (Comando) comandos.get(c[0]);
 		
-		if(comando != null)
-			return comando.executa(a);
+		if(comando != null) {
+			return comando.executa(//como pegar o resto da string);
+		}
 		
 		return "Comando Inválido" + System.getProperty("line,separator");
 		
@@ -30,13 +31,44 @@ public class CUIBiblioteca {
 	
 	public static void main(String[] args) {
 
+		Scanner scan = new Scanner(System.in);
+		String entrada;
+	
+		String[] cmds;
+		
+		final String fimDeLinha = System.getProperty("line.separator");
+		String msg = "Entre o Comando no seguinte formato:" + fimDeLinha + 
+				"<Comando> <arg0> [<arg1>] [<arg2>] ..." + fimDeLinha +
+				"Ou diqite 'q' para sair" + fimDeLinha;
+		
 		cui = new CUIBiblioteca();
 		
 		cui.initBiblioteca();
 		cui.initComandos();
 		
+		System.out.println("Bem-Vindo ao Sistema de Bibliotecas");
 		
+		System.out.println(msg);
+		entrada = scan.nextLine();
 		
+		while(!entrada.equals("q")) {
+			
+			cmds = entrada.split(" ");
+			
+			if(cmds.length > 2) {
+				String t = cui.executaComando(cmds);
+				System.out.println(t);
+			}
+			else
+				System.out.println("Erro! Número inválido de argumentos");
+			
+			System.out.println(msg);
+			entrada = scan.nextLine();
+			
+		}
+		
+		scan.close();
+				
 	}
 
 	private void initComandos() {

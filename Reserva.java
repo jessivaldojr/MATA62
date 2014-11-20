@@ -40,4 +40,8 @@ public class Reserva {
 		return material.getTitulo();
 	}
 	
+	public boolean comparaMaterial(Material m) {
+		return (m == material);
+	}
+	
 }

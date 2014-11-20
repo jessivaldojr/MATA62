@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public abstract class Emprestimo {
+public class Emprestimo {
 
 	private Date dataEmprestimo;
 
