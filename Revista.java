@@ -18,4 +18,10 @@ public class Revista extends Material {
 		return mes;
 	}
 	
+	@Override
+	public  String getTipo(){
+		
+		return Revista.class.getName();
+	}
+	
 }

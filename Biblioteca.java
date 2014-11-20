@@ -85,11 +85,12 @@ public class Biblioteca {
 		
 		Iterator<Material> iterator = material.iterator();
 		
-		while(iterator.hasNext()){
+		while(iterator.hasNext()) {
 			
 			Material cada = (Material) iterator.next();
 			
 			if(cada.getCodigo() == codigo) {
+				
 				return cada;
 				
 			}
@@ -99,12 +100,50 @@ public class Biblioteca {
 		
 	}
 	
+	public Usuario getUsuarioPeloCodigo(int codigo) {
+		
+		Iterator<Usuario> iterator = usuario.iterator();
+		
+		while(iterator.hasNext()) {
+			
+			Usuario cada =  (Usuario) iterator.next();
+			
+			if(cada.getId() == codigo) {
+				
+				return cada;
+				
+			}
+		}
+		
+		return null;
+		
+ 	}
+	
 	public String emprestimo() {
 		return null;
 	}
 
-	public String devolucao() {
-		return null;
+	public String devolucao(int codigoUsuario, int codigoMaterial) {
+		
+		final String fimDeLinha = System.getProperty("line.separator");
+		
+		Usuario user = getUsuarioPeloCodigo(codigoUsuario);
+		
+		if(user == null)
+			return "Erro. Usuário inexistente." + fimDeLinha;
+		
+		String mensagem = user.devolucao(codigoMaterial);
+		
+		if(mensagem == null) {
+			
+			Material material = getMaterialPeloCodigo(codigoMaterial);
+			
+			mensagem += "Erro na devolução. Usuário " + user.getNome() + " não possui empréstimo em aberto do material: " + 
+						material.getTitulo() + fimDeLinha;
+		}
+		
+		return mensagem;
+		
 	}
 
 	public String consulta() {
@@ -138,7 +177,26 @@ public class Biblioteca {
 		return null;
 	}
 
-	public String consultaUsuario() {
+	public String consultaUsuario(int codigo) {
+		
+		final String fimDeLinha = System.getProperty("line.separator");
+		
+		String consulta = "Consulta de Usuário" + fimDeLinha;
+		Usuario user = getUsuarioPeloCodigo(codigo);
+		
+		if(user != null) {
+			
+			consulta += "Empréstimos realizados: " + fimDeLinha;
+			consulta += user.listagemEmprestimos() + fimDeLinha;
+			
+			consulta += "Reservas Efetuadas: " + fimDeLinha;
+			consulta += user.listagemReservas();
+			
+			return consulta;
+ 			
+		}
+		
+		
 		return null;
 	}
 

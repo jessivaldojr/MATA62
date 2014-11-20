@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class Material {
+public abstract class Material {
 
 	private int codigo;
 	
@@ -121,4 +121,5 @@ public class Material {
 		return ano;
 	}
 	
+	public abstract String getTipo();
 }

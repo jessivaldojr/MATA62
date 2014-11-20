@@ -35,4 +35,9 @@ public class Reserva {
 		return usuario.getNome();
 	}
 	
+	public String getTituloMaterial() {
+		
+		return material.getTitulo();
+	}
+	
 }

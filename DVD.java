@@ -18,4 +18,9 @@ public class DVD extends Material {
 		return regiao;
 	}
 
+	@Override
+	public  String getTipo(){
+		
+		return DVD.class.getName();
+	}
 }

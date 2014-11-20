@@ -45,4 +45,28 @@ public class Exemplar {
 		return material;
 	}
 	
+	public String getTituloMaterial() {
+		
+		return material.getTitulo();
+	}
+	
+	public int getCodigoMaterial() {
+		
+		return material.getCodigo();
+	}
+	
+	public String getTipoMaterial() {
+		
+		return material.getTipo();
+	}
+	
+	public void devolverExemplar() {
+		
+		emprestimo = null;
+		setStatus(true);
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 }

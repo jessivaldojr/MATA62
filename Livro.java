@@ -25,5 +25,10 @@ public class Livro extends Material {
 		return edicao;
 	}
 
+	@Override
+	public  String getTipo(){
+		
+		return Livro.class.getName();
+	}
 
 }

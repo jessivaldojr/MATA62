@@ -53,4 +53,22 @@ public abstract class Emprestimo {
 		this.dataDevolucao = dataDevolucao;
 	}	
 	
+	public String getTituloMaterial() {
+		return exemplar.getTituloMaterial();
+	}
+	
+	public int getCodigoMaterial() {
+		
+		return exemplar.getCodigoMaterial();
+	}
+	
+	public String getTipoMaterial() {
+		
+		return exemplar.getTipoMaterial();
+	}
+	
+	public void devolverExemplar() {
+		
+		exemplar.devolverExemplar();
+	}
 }

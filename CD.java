@@ -17,4 +17,11 @@ public class CD extends Material {
 	public String[] getFaixa() {
 		return faixa;
 	}	
+	
+	@Override
+	public  String getTipo(){
+		
+		return CD.class.getName();
+	}
+	
 }
