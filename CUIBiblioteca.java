@@ -1,5 +1,9 @@
 import java.util.*;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
+
+
 public class CUIBiblioteca {
 
 	private static CUIBiblioteca cui;
@@ -18,11 +22,17 @@ public class CUIBiblioteca {
 
 	
 	private String executaComando(String[] c) {
-		
+				
 		comando = (Comando) comandos.get(c[0]);
 		
+		System.out.println(c[0]);
+		
 		if(comando != null) {
-			return comando.executa(//como pegar o resto da string);
+			String[] args = new String[c.length - 1]; 
+			
+			System.arraycopy(c, 1, args, 0, c.length - 1);
+			
+			return comando.executa(args);
 		}
 		
 		return "Comando Inválido" + System.getProperty("line,separator");
@@ -55,12 +65,14 @@ public class CUIBiblioteca {
 			
 			cmds = entrada.split(" ");
 			
-			if(cmds.length > 2) {
+			if(cmds.length >= 2) {				
 				String t = cui.executaComando(cmds);
 				System.out.println(t);
 			}
 			else
 				System.out.println("Erro! Número inválido de argumentos");
+			
+			
 			
 			System.out.println(msg);
 			entrada = scan.nextLine();
@@ -82,6 +94,11 @@ public class CUIBiblioteca {
 	}
 	
 	private void initBiblioteca() {
+		
+		biblioteca.addUsuario("João da Silva", 123, new AlunoGraduacao());
+		biblioteca.addUsuario("Luiz Fernando Rodrigues", 456, new AlunoPosGraduacao());
+		biblioteca.addUsuario("Pedro Paulo", 789, new AlunoGraduacao());
+		biblioteca.addUsuario("Carlos Lucena", 100, new Professor());
 		
 		String[] autores0 = {"Ian Sommervile"};
 		biblioteca.addLivro(100,"Engenharia de Software", "Addison Wesley",autores0, "6a", 2000);

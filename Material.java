@@ -5,6 +5,8 @@ import java.util.Vector;
 
 public abstract class Material {
 
+	final String fimDeLinha = System.getProperty("line.separator");
+	
 	private int codigo;
 	
 	private String titulo;
@@ -79,7 +81,6 @@ public abstract class Material {
 	
 	public String listagemUsuariosComReservas() {
 		
-		final String fimDeLinha = System.getProperty("line.separator");
 		String lista = "";
 		
 		if (numeroDeReservas>0) {
@@ -105,8 +106,7 @@ public abstract class Material {
 	}
 	
 	public String listagemExemplares() {
-		
-		final String fimDeLinha = System.getProperty("line.separator");
+
 		String lista = "";
 		
 		Iterator<Exemplar> iterator = exemplares.iterator();
@@ -115,6 +115,7 @@ public abstract class Material {
 		while( iterator.hasNext() ) {
 			
 			cada = (Exemplar) iterator.next();
+			lista += "Código de exemplar: " + cada.getCodigo() + fimDeLinha;
 			lista += cada.getStatus() + fimDeLinha;
 			if(!cada.isStatus()) {
 				lista += "Usuario: " + cada.getNomeUsuario() + fimDeLinha;

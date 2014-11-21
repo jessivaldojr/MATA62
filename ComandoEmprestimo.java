@@ -9,8 +9,8 @@ public class ComandoEmprestimo implements Comando {
 	public String executa(String[] arg) {
 		
 		if(arg.length == 2) {
-			int codUsuario = Integer.getInteger(arg[0]);
-			int codMaterial = Integer.getInteger(arg[1]);
+			int codUsuario = Integer.parseInt(arg[0]);
+			int codMaterial = Integer.parseInt(arg[1]);
 			
 			return biblioteca.emprestimo(codUsuario, codMaterial);
 		}

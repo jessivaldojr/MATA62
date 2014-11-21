@@ -12,7 +12,7 @@ public class ComandoConsultaUsuario implements Comando {
 		
 		if(arg.length == 1) {
 			
-			int c = Integer.getInteger(arg[0]);
+			int c = Integer.parseInt(arg[0]);
 		
 			return biblioteca.consultaUsuario(c);
 			

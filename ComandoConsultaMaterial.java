@@ -12,7 +12,9 @@ public class ComandoConsultaMaterial implements Comando {
 		
 		if(arg.length == 1) {
 		
-			int c = Integer.getInteger(arg[0]);
+			System.out.println(arg[0].toString());
+			
+			int c = Integer.parseInt(arg[0]);
 			
 			return biblioteca.consultaMaterial(c);
 			

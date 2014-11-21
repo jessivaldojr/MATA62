@@ -1,11 +1,16 @@
+import java.util.Calendar;
 import java.util.Date;
 
 public class Professor implements ClasseDeUsuario {
 
+	@Override
 	public Date calculaDataDevolucao(Date dataEmprestimo) {
-		//TODO
-		return null;
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(dataEmprestimo);
+        cal.add(Calendar.DATE,4);
+        return cal.getTime();
 	}
+
 
 	@Override
 	public String realizaEmprestimo(Material m, Usuario usuario) {
@@ -20,14 +25,20 @@ public class Professor implements ClasseDeUsuario {
 		Reserva r = usuario.getReservaPeloCodigoMaterial(m.getCodigo()); 
 		Date d = new Date(System.currentTimeMillis());
 		
+		String msg = "Empréstimo realizado com sucesso! " + fimDeLinha + 
+				 	 "Usuário: " + usuario.getNome() + fimDeLinha +
+				 	 "Título: " + m.getTitulo() + fimDeLinha;
+		
 		if(r != null) {
 			usuario.removerReserva(r);
 			m.removerReserva(r);
+			
+			return msg;
 		}
 		
 		usuario.addEmprestimo(new Emprestimo(d, calculaDataDevolucao(d),usuario,m.getExemplarDisponivel()));
 			
-		return null;
+		return msg;
 	}
 
 }
