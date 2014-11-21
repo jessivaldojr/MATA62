@@ -23,12 +23,11 @@ public class Biblioteca {
 			biblioteca = new Biblioteca();
 		}
 			
-		return biblioteca;
-		
+		return biblioteca;	
 	}
 	
-	public void addUsuario(String nome, int id, ClasseDeUsuario c) {	
-		usuarios.add(new Usuario(nome, id, c));
+	public void addUsuario(String nome, int codigo, ClasseDeUsuario c) {	
+		usuarios.add(new Usuario(nome, codigo, c));
 	}
 	
 	public void addCD(int codigo, String titulo, String autor, String[] faixa, int ano) {
@@ -47,18 +46,18 @@ public class Biblioteca {
 		materiais.add(new Revista(codigo, titulo, edicao, mesPublicacao, ano));
 	}
 	
-	public boolean addExemplar(int codigoMaterial, short codigoExemplar) {
-		Material aux = getMaterialPeloCodigo(codigoMaterial);
+	public boolean addExemplar(int codigoMaterial, int codigoExemplar) {
+		Material m = getMaterialPeloCodigo(codigoMaterial);
 	
-		if(aux != null){
-			aux.addExemplar(codigoExemplar);
+		if(m != null){
+			m.addExemplar(codigoExemplar);
 			return true;
 		}
 	
 		return false;	
 	}
 	
-	public Material getMaterialPeloCodigo(int codigo) {
+	private Material getMaterialPeloCodigo(int codigo) {
 		
 		Iterator<Material> iterator = materiais.iterator();
 		
@@ -76,7 +75,7 @@ public class Biblioteca {
 		return null;	
 	}
 	
-	public Usuario getUsuarioPeloCodigo(int codigo) {
+	private Usuario getUsuarioPeloCodigo(int codigo) {
 		
 		Iterator<Usuario> iterator = usuarios.iterator();
 		
@@ -84,7 +83,7 @@ public class Biblioteca {
 			
 			Usuario cada =  (Usuario) iterator.next();
 			
-			if(cada.getId() == codigo) {
+			if(cada.getCodigo() == codigo) {
 				
 				return cada;
 				
@@ -131,7 +130,6 @@ public class Biblioteca {
 		}
 		
 		return mensagem;
-		
 	}
 
 	public String reserva(int codigoUsuario, int codigoMaterial) {
@@ -176,7 +174,7 @@ public class Biblioteca {
 			consulta = "Título: " + m.getTitulo() + fimDeLinha;
 				
 			consulta += "Usuários com reservas:" + fimDeLinha;
-			consulta += m.listagemUsuariosComReservas();
+			consulta += m.listagemReservas();
 						
 			consulta += "Exemplares:" +fimDeLinha;
 			consulta += m.listagemExemplares() + fimDeLinha;

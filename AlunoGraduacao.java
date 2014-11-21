@@ -41,7 +41,7 @@ public class AlunoGraduacao implements ClasseDeUsuario {
 			
 			return msg;
 		}
-		else if(m.exemplaresSemReserva()) {
+		else if(m.possuiExemplaresSemReserva()) {
 			usuario.addEmprestimo(new Emprestimo(d, calculaDataDevolucao(d),usuario,m.getExemplarDisponivel()));
 			
 			return msg;

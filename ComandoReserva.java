@@ -2,8 +2,8 @@ public class ComandoReserva implements Comando {
 
 	private Biblioteca biblioteca;
 
-	public ComandoReserva(Biblioteca biblioteca) {
-		this.biblioteca = biblioteca;
+	public ComandoReserva() {
+		this.biblioteca = Biblioteca.obeterBiblioteca();
 	}
 
 	public String executa(String[] arg) {

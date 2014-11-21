@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public abstract class Material {
 
-	final String fimDeLinha = System.getProperty("line.separator");
+	private final String fimDeLinha = System.getProperty("line.separator");
 	
 	private int codigo;
 	
@@ -38,15 +38,15 @@ public abstract class Material {
 			numeroDeReservas--;
 	}
 	
-	public void addExemplar(short codigo){
+	public void addExemplar(int codigo){
 		exemplares.add(new Exemplar(codigo));
 	}
 	
-	public boolean exemplaresSemReserva() {
+	public boolean possuiExemplaresSemReserva() {
 		return (numeroDeReservas < exemplares.size());
 	}
 	
-	public boolean exemplaresDisponivelParaEmprestimo() {
+	public boolean possuiExemplaresParaEmprestimo() {
 		
 		Iterator<Exemplar> iterator = exemplares.iterator();
 		
@@ -54,7 +54,7 @@ public abstract class Material {
 			
 			Exemplar cada = (Exemplar) iterator.next();
 			
-			if(cada.isStatus()) {
+			if(cada.getStatus()) {
 				return true;		
 			}
 		}
@@ -79,7 +79,7 @@ public abstract class Material {
 		return null;
 	}
 	
-	public String listagemUsuariosComReservas() {
+	public String listagemReservas() {
 		
 		String lista = "";
 		
@@ -91,16 +91,14 @@ public abstract class Material {
 			while( iterator.hasNext() ) {
 				
 				cada = (Reserva) iterator.next();
-				lista += cada.getNomeUsuario() + fimDeLinha;
+				lista += cada.getNomeUsuario() + ". Data da Reserva: "+ cada.getData().toString() + "." + fimDeLinha;
 				
 			}
 			
 		}
 		else {
 			lista += "Não existem reservas cadastradas para este Material" + fimDeLinha;
-		}
-		
-		
+		}		
 		
 		return lista;		
 	}
@@ -117,7 +115,7 @@ public abstract class Material {
 			cada = (Exemplar) iterator.next();
 			lista += "Código de exemplar: " + cada.getCodigo() + fimDeLinha;
 			lista += cada.getStatus() + fimDeLinha;
-			if(!cada.isStatus()) {
+			if(!cada.getStatus()) {
 				lista += "Usuario: " + cada.getNomeUsuario() + fimDeLinha;
 				lista += "Data do Emprestimo: " + cada.getDataEmprestimo() + fimDeLinha;
 				lista += "Data de Devolução Prevista: " + cada.getDataDevolucaoPrevista() + fimDeLinha;
@@ -136,7 +134,7 @@ public abstract class Material {
 		while( iterator.hasNext() ) {
 			
 			cada = (Exemplar) iterator.next();
-			if(cada.isStatus()) {
+			if(cada.getStatus()) {
 				return cada;
 			}
 			

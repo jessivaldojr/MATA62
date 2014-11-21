@@ -3,8 +3,8 @@ public class ComandoConsultaUsuario implements Comando {
 	private Biblioteca biblioteca;
 
 		
-	public ComandoConsultaUsuario(Biblioteca biblioteca) {
-		this.biblioteca = biblioteca;
+	public ComandoConsultaUsuario() {
+		this.biblioteca = Biblioteca.obeterBiblioteca();
 	}
 
 

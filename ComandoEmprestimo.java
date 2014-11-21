@@ -2,8 +2,8 @@ public class ComandoEmprestimo implements Comando {
 
 	private Biblioteca biblioteca;
 
-	public ComandoEmprestimo(Biblioteca biblioteca) {
-		this.biblioteca = biblioteca;
+	public ComandoEmprestimo() {
+		this.biblioteca = Biblioteca.obeterBiblioteca();
 	}
 
 	public String executa(String[] arg) {

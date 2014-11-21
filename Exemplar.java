@@ -1,6 +1,6 @@
 public class Exemplar {
 
-	private short codigo;
+	private int codigo;
 
 	private boolean status;
 	
@@ -8,23 +8,17 @@ public class Exemplar {
 	
 	private Material material;
 	
-	public Exemplar(short codigo) {
+	public Exemplar(int codigo) {
 		this.codigo = codigo;
 		this.status = true;
 	}
 
-	public short getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
-	}
-
-	public String getStatus() {
-		if (status)
-			return "Disponível";
-		return "Emprestado";
 	}
 	
 	public String getNomeUsuario() {

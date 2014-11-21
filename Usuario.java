@@ -9,7 +9,7 @@ public class Usuario {
 	
 	private String nome;
 
-	private int id;
+	private int codigo;
 
 	private ClasseDeUsuario u;
 	
@@ -19,9 +19,9 @@ public class Usuario {
 	
 	private Collection<Emprestimo> emprestimosFinalizados = new Vector<Emprestimo>();
 	
-	public Usuario(String nome, int id, ClasseDeUsuario u) {
+	public Usuario(String nome, int codigo, ClasseDeUsuario u) {
 		this.nome = nome;
-		this.id = id;
+		this.codigo = codigo;
 		this.u = u;
 	}
 
@@ -37,8 +37,8 @@ public class Usuario {
 		return nome;
 	}
 
-	public int getId() {
-		return id;
+	public int getCodigo() {
+		return codigo;
 	}
 
 	public int getTotalReservas() {
@@ -180,9 +180,9 @@ public class Usuario {
 			return lista;		
 	}
 	
-	public String devolucao(int codigo) {
+	public String devolucao(int codigoMaterial) {
 		
-		Emprestimo emprestimo = getEmprestimoPeloCodigoMaterial(codigo);
+		Emprestimo emprestimo = getEmprestimoPeloCodigoMaterial(codigoMaterial);
 		
 		if(emprestimo != null) {
 			
@@ -221,7 +221,7 @@ public class Usuario {
 	
 	public String realizaEmprestimo(Material m) {
 		
-		if(!m.exemplaresDisponivelParaEmprestimo()) {
+		if(!m.possuiExemplaresParaEmprestimo()) {
 			return "Não foi possível realizar o empréstimo. " + m.getTitulo() + ": Não há exemplares disponíveis."
 																				+ fimDeLinha;
 		}

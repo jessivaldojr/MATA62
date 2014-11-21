@@ -2,8 +2,8 @@ public class ComandoDevolucao implements Comando {
 
 	private Biblioteca biblioteca;
 
-	public ComandoDevolucao(Biblioteca biblioteca) {
-		this.biblioteca = biblioteca;
+	public ComandoDevolucao() {
+		this.biblioteca = Biblioteca.obeterBiblioteca();
 	}
 
 	public String executa(String[] arg) {

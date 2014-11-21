@@ -2,14 +2,14 @@ public class Livro extends Material {
 	
 	private String editora;
 
-	private String[] autores;
+	private String[] autor;
 
 	private String edicao;
 
 	public Livro(int codigo, String titulo, String editora, String[] autores, String edicao, int ano) {
 		super(codigo, titulo, ano);
 		this.editora = editora;
-		this.autores = autores;
+		this.autor = autores;
 		this.edicao = edicao;
 	}
 
@@ -18,7 +18,7 @@ public class Livro extends Material {
 	}
 
 	public String[] getAutores() {
-		return autores;
+		return autor;
 	}
 
 	public String getEdicao() {
