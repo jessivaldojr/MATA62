@@ -5,7 +5,7 @@ public class AlunoGraduacao extends ClasseDeUsuario {
 		
 		final String fimDeLinha = System.getProperty("line.separator");
 		
-		String msg;
+		String msg = new String("");
 		
 		if(usuario.estaDevedor()) {
 			
@@ -15,7 +15,7 @@ public class AlunoGraduacao extends ClasseDeUsuario {
 			return new StatusRegraEmprestimo(false, msg);
 		}
 		
-		if(usuario.getTotalEmprestimosEmAberto() > 3) {
+		if(usuario.getTotalEmprestimosEmAberto() >= 3) {
 			
 			msg = "Não foi possível realizar o empréstimo. Usuário: " + usuario.getNome() + 
 					" Já possui número máximo de 3 empréstimos!" + fimDeLinha; 
@@ -36,7 +36,7 @@ public class AlunoGraduacao extends ClasseDeUsuario {
 		}
 		else if(!m.possuiExemplaresSemReserva()) {
 			msg = "Não foi possível realizar o empréstimo. Usuário: " + usuario.getNome() + 
-			"Não Existem exemplares Disponíveis para empréstimo!" + fimDeLinha;
+			". Não Existem exemplares disponíveis para empréstimo!" + fimDeLinha;
 			
 			return new StatusRegraEmprestimo(false, msg);
 		}	

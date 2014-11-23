@@ -6,6 +6,7 @@ public class StatusRegraEmprestimo {
 	
 	public StatusRegraEmprestimo(boolean status, String mensagem) {
 		this.status = status;
+		this.mensagem = mensagem;
 	}
 	
 	public boolean isStatus() {
