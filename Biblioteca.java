@@ -191,13 +191,13 @@ public class Biblioteca {
 		Usuario user = getUsuarioPeloCodigo(codigo);
 		
 		if(user != null) {
-			
+
 			consulta += "Empréstimos realizados: " + fimDeLinha;
 			consulta += user.listagemEmprestimos() + fimDeLinha;
-			
+
 			consulta += "Reservas Efetuadas: " + fimDeLinha;
 			consulta += user.listagemReservas();
-			
+
 			return consulta;
  			
 		}

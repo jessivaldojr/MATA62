@@ -19,6 +19,8 @@ public class Emprestimo {
 		this.dataDevolucao = null;
 		this.usuario = usuario;
 		this.exemplar = exemplar;
+		
+		exemplar.emprestarExemplar(this);
 	}
 	
 	public Date getDataEmprestimo() {
@@ -57,18 +59,15 @@ public class Emprestimo {
 		return exemplar.getTituloMaterial();
 	}
 	
-	public int getCodigoMaterial() {
-		
+	public int getCodigoMaterial() {	
 		return exemplar.getCodigoMaterial();
 	}
 	
-	public String getTipoMaterial() {
-		
+	public String getTipoMaterial() {	
 		return exemplar.getTipoMaterial();
 	}
 	
-	public void devolverExemplar() {
-		
+	public void devolverExemplar() {	
 		exemplar.devolverExemplar();
 	}
 }

@@ -23,8 +23,6 @@ public class CUIBiblioteca {
 				
 		comando = (Comando) comandos.get(c[0]);
 		
-		System.out.println(c[0]);
-		
 		if(comando != null) {
 			String[] args = new String[c.length - 1]; 
 			

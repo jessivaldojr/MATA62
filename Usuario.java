@@ -139,7 +139,7 @@ public class Usuario {
 		else {
 			
 			if (!emprestimosFinalizados.isEmpty()) {
-				
+		
 				Iterator<Emprestimo> iterator = emprestimosFinalizados.iterator();
 				Emprestimo cada;
 				
@@ -158,10 +158,10 @@ public class Usuario {
 			}
 			
 			if (!emprestimosEmAberto.isEmpty()) {
-				
+
 				Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
 				Emprestimo cada;
-				
+
 				while( iterator.hasNext() ) {
 					
 					cada = (Emprestimo) iterator.next();
@@ -170,14 +170,12 @@ public class Usuario {
 					lista += "Tipo: " + cada.getTipoMaterial() + fimDeLinha;
 					lista += "Data do Emprestimo: " + cada.getDataEmprestimo().toString() + fimDeLinha;
 					lista += "Status: em curso" + fimDeLinha;
-					lista += "Data de Devolução Prevista: " + cada.getDataDevolucaoPrevista().toString() + fimDeLinha;
-					
+					lista += "Data de Devolução Prevista: " + cada.getDataDevolucaoPrevista().toString() + fimDeLinha;		
 				}
 			}
 		}
 		
-			
-			return lista;		
+		return lista;		
 	}
 	
 	public String devolucao(int codigoMaterial) {

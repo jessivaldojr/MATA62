@@ -11,8 +11,6 @@ public class ComandoConsultaMaterial implements Comando {
 	public String executa(String[] arg) {
 		
 		if(arg.length == 1) {
-		
-			System.out.println(arg[0].toString());
 			
 			int c = Integer.parseInt(arg[0]);
 			

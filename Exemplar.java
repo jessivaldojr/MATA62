@@ -8,8 +8,9 @@ public class Exemplar {
 	
 	private Material material;
 	
-	public Exemplar(int codigo) {
+	public Exemplar(int codigo, Material material) {
 		this.codigo = codigo;
+		this.material = material;
 		this.status = true;
 	}
 
@@ -40,24 +41,25 @@ public class Exemplar {
 	}
 	
 	public String getTituloMaterial() {
-		
 		return material.getTitulo();
 	}
 	
-	public int getCodigoMaterial() {
-		
+	public int getCodigoMaterial() {	
 		return material.getCodigo();
 	}
 	
-	public String getTipoMaterial() {
-		
+	public String getTipoMaterial() {		
 		return material.getTipo();
 	}
 	
-	public void devolverExemplar() {
-		
+	public void devolverExemplar() {		
 		emprestimo = null;
 		setStatus(true);
+	}
+	
+	public void emprestarExemplar(Emprestimo emp) {
+		this.emprestimo = emp;
+		setStatus(false);
 	}
 
 	public void setStatus(boolean status) {

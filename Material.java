@@ -27,10 +27,8 @@ public abstract class Material {
 	}
 
 	public void novaReserva(Date data, Usuario u ) {
-
 		reservas.add(new Reserva(data,u,this));
 		numeroDeReservas++;
-		
 	}
 
 	public void removerReserva(Reserva r) {
@@ -39,7 +37,7 @@ public abstract class Material {
 	}
 	
 	public void addExemplar(int codigo){
-		exemplares.add(new Exemplar(codigo));
+		exemplares.add(new Exemplar(codigo, this));
 	}
 	
 	public boolean possuiExemplaresSemReserva() {

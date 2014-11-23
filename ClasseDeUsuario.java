@@ -12,7 +12,7 @@ public abstract class ClasseDeUsuario {
 		String msg = null;
 		
 		s = verificaRegrasDeEmprestimo(m, usuario);
-		msg += s.getMsg();
+		msg += s.getMensagem();
 		
 		if(s.isStatus()) {
 			msg = "Usuário: " + usuario.getNome() + fimDeLinha +

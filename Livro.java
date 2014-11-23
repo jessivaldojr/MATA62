@@ -26,9 +26,8 @@ public class Livro extends Material {
 	}
 
 	@Override
-	public  String getTipo(){
-		
-		return Livro.class.getName();
+	public String getTipo(){	
+		return this.getClass().getName();
 	}
 
 }
