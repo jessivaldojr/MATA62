@@ -18,7 +18,6 @@ public class Biblioteca {
 	}
 	
 	public static Biblioteca obeterBiblioteca() {
-		
 		if(biblioteca == null) {
 			biblioteca = new Biblioteca();
 		}
@@ -125,7 +124,7 @@ public class Biblioteca {
 			
 			Material material = getMaterialPeloCodigo(codigoMaterial);
 			
-			mensagem += "Erro na devolução. Usuário " + user.getNome() + " não possui empréstimo em aberto do material: " + 
+			mensagem = "Erro na devolução. Usuário " + user.getNome() + " não possui empréstimo em aberto do material: " + 
 						material.getTitulo() + fimDeLinha;
 		}
 		

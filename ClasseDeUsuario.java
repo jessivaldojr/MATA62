@@ -9,7 +9,7 @@ public abstract class ClasseDeUsuario {
 		
 		Date d = new Date(System.currentTimeMillis());
 		StatusRegraEmprestimo s;
-		String msg = null;
+		String msg = "";
 		
 		s = verificaRegrasDeEmprestimo(m, usuario);
 		msg += s.getMensagem();
