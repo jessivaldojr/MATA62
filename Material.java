@@ -15,9 +15,9 @@ public abstract class Material {
 	
 	private int numeroDeReservas;
 
-	private Collection<Reserva> reservas = new Vector<Reserva>();
+	private Collection reservas = new Vector();
 	
-	private Collection<Exemplar> exemplares = new Vector<Exemplar>();
+	private Collection exemplares = new Vector();
 	
 	public Material(int codigo, String titulo, int ano) {
 		this.codigo = codigo;
@@ -46,7 +46,7 @@ public abstract class Material {
 	
 	public boolean possuiExemplaresParaEmprestimo() {
 		
-		Iterator<Exemplar> iterator = exemplares.iterator();
+		Iterator iterator = exemplares.iterator();
 		
 		while(iterator.hasNext()){
 			
@@ -62,7 +62,7 @@ public abstract class Material {
 	
 	public Exemplar getExemplarPeloCodigo(int codigo) {
 		
-		Iterator<Exemplar> iterator = exemplares.iterator();
+		Iterator iterator = exemplares.iterator();
 		
 		while(iterator.hasNext()){
 			
@@ -83,7 +83,7 @@ public abstract class Material {
 		
 		if (numeroDeReservas>0) {
 			
-			Iterator<Reserva> iterator = reservas.iterator();
+			Iterator iterator = reservas.iterator();
 			Reserva cada;
 			
 			while( iterator.hasNext() ) {
@@ -105,7 +105,7 @@ public abstract class Material {
 
 		String lista = "";
 		
-		Iterator<Exemplar> iterator = exemplares.iterator();
+		Iterator iterator = exemplares.iterator();
 		Exemplar cada;
 		
 		while( iterator.hasNext() ) {
@@ -126,7 +126,7 @@ public abstract class Material {
 	
 	public Exemplar getExemplarDisponivel() {
 		
-		Iterator<Exemplar> iterator = exemplares.iterator();
+		Iterator iterator = exemplares.iterator();
 		Exemplar cada;
 		
 		while( iterator.hasNext() ) {

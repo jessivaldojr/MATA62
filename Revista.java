@@ -21,7 +21,7 @@ public class Revista extends Material {
 	@Override
 	public  String getTipo(){
 		
-		return Revista.class.getName();
+		return this.getClass().getName();
 	}
 	
 }

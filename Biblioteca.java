@@ -7,9 +7,9 @@ public class Biblioteca {
 
 	private static Biblioteca biblioteca;
 
-	private Collection<Usuario> usuarios = new Vector<Usuario>();
+	private Collection usuarios = new Vector();
 
-	private Collection<Material> materiais = new Vector<Material>();
+	private Collection materiais = new Vector();
 
 	private final String fimDeLinha = System.getProperty("line.separator");
 	
@@ -58,7 +58,7 @@ public class Biblioteca {
 	
 	private Material getMaterialPeloCodigo(int codigo) {
 		
-		Iterator<Material> iterator = materiais.iterator();
+		Iterator iterator = materiais.iterator();
 		
 		while(iterator.hasNext()) {
 			
@@ -76,7 +76,7 @@ public class Biblioteca {
 	
 	private Usuario getUsuarioPeloCodigo(int codigo) {
 		
-		Iterator<Usuario> iterator = usuarios.iterator();
+		Iterator iterator = usuarios.iterator();
 		
 		while(iterator.hasNext()) {
 			

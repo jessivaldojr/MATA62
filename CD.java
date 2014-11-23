@@ -21,7 +21,7 @@ public class CD extends Material {
 	@Override
 	public  String getTipo(){
 		
-		return CD.class.getName();
+		return this.getClass().getName();
 	}
 	
 }

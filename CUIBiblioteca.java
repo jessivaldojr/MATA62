@@ -8,7 +8,7 @@ public class CUIBiblioteca {
 	
 	private Comando comando;
 
-	private HashMap<String, Comando> comandos = new HashMap<String, Comando>();
+	private HashMap comandos = new HashMap();
 	
 	private Biblioteca biblioteca;
 	

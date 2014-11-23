@@ -13,11 +13,11 @@ public class Usuario {
 
 	private ClasseDeUsuario u;
 	
-	private Collection<Reserva> reservas = new Vector<Reserva>();
+	private Collection reservas = new Vector();
 
-	protected Collection<Emprestimo> emprestimosEmAberto = new Vector<Emprestimo>();
+	protected Collection emprestimosEmAberto = new Vector();
 	
-	private Collection<Emprestimo> emprestimosFinalizados = new Vector<Emprestimo>();
+	private Collection emprestimosFinalizados = new Vector();
 	
 	public Usuario(String nome, int codigo, ClasseDeUsuario u) {
 		this.nome = nome;
@@ -55,7 +55,7 @@ public class Usuario {
 	
 	public Emprestimo getEmprestimoPeloCodigoExemplar(int codigo) {
 		
-		Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
+		Iterator iterator = emprestimosEmAberto.iterator();
 		
 		while(iterator.hasNext()){
 			
@@ -72,7 +72,7 @@ public class Usuario {
 	
 	public Emprestimo getEmprestimoPeloCodigoMaterial(int codigo) {
 		
-		Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
+		Iterator iterator = emprestimosEmAberto.iterator();
 		
 		while(iterator.hasNext()){
 			
@@ -89,7 +89,7 @@ public class Usuario {
 	
 	public Reserva getReservaPeloCodigoMaterial(int codigo) {
 		
-		Iterator<Reserva> iterator = reservas.iterator();
+		Iterator iterator = reservas.iterator();
 		
 		while(iterator.hasNext()){
 			
@@ -113,7 +113,7 @@ public class Usuario {
 					
 		}
 		
-		Iterator<Reserva> iterator = reservas.iterator();
+		Iterator iterator = reservas.iterator();
 		
 		while(iterator.hasNext()) {
 			
@@ -140,7 +140,7 @@ public class Usuario {
 			
 			if (!emprestimosFinalizados.isEmpty()) {
 		
-				Iterator<Emprestimo> iterator = emprestimosFinalizados.iterator();
+				Iterator iterator = emprestimosFinalizados.iterator();
 				Emprestimo cada;
 				
 				while( iterator.hasNext() ) {
@@ -159,7 +159,7 @@ public class Usuario {
 			
 			if (!emprestimosEmAberto.isEmpty()) {
 
-				Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
+				Iterator iterator = emprestimosEmAberto.iterator();
 				Emprestimo cada;
 
 				while( iterator.hasNext() ) {
@@ -203,7 +203,7 @@ public class Usuario {
 	}
 	
 	public boolean estaDevedor() {
-		Iterator<Emprestimo> iterator = emprestimosEmAberto.iterator();
+		Iterator iterator = emprestimosEmAberto.iterator();
 		Emprestimo cada;
 		
 		while( iterator.hasNext() ) {
@@ -229,7 +229,7 @@ public class Usuario {
 
 	public boolean possuiReserva( Material m) {
 		
-		Iterator<Reserva> iterator = reservas.iterator();
+		Iterator iterator = reservas.iterator();
 		Reserva cada;
 		
 		while( iterator.hasNext() ) {

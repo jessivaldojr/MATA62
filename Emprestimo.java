@@ -19,8 +19,7 @@ public class Emprestimo {
 		this.dataDevolucao = null;
 		this.usuario = usuario;
 		this.exemplar = exemplar;
-		
-		exemplar.emprestarExemplar(this);
+		this.exemplar.emprestarExemplar(this);
 	}
 	
 	public Date getDataEmprestimo() {

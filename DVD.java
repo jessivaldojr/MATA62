@@ -21,6 +21,6 @@ public class DVD extends Material {
 	@Override
 	public  String getTipo(){
 		
-		return DVD.class.getName();
+		return this.getClass().getName();
 	}
 }
