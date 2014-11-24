@@ -11,7 +11,7 @@ public class Usuario {
 
 	private int codigo;
 
-	private ClasseDeUsuario u;
+	private RegraDeEmprestimo regra;
 	
 	private Collection reservas = new Vector();
 
@@ -19,10 +19,10 @@ public class Usuario {
 	
 	private Collection emprestimosFinalizados = new Vector();
 	
-	public Usuario(String nome, int codigo, ClasseDeUsuario u) {
+	public Usuario(String nome, int codigo, RegraDeEmprestimo regra) {
 		this.nome = nome;
 		this.codigo = codigo;
-		this.u = u;
+		this.regra = regra;
 	}
 
 	public void incluirReserva(Reserva r) {
@@ -224,7 +224,7 @@ public class Usuario {
 																				+ fimDeLinha;
 		}
 		
-		return u.realizaEmprestimo(m, this);
+		return regra.realizaEmprestimo(m, this);
 	}
 
 	public boolean possuiReserva( Material m) {

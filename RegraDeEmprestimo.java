@@ -1,7 +1,7 @@
 import java.util.Calendar;
 import java.util.Date;
 
-public abstract class ClasseDeUsuario {
+public abstract class RegraDeEmprestimo {
 	
 	public String realizaEmprestimo(Material m, Usuario usuario) {
 		

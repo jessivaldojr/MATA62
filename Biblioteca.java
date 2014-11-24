@@ -25,7 +25,7 @@ public class Biblioteca {
 		return biblioteca;	
 	}
 	
-	public void addUsuario(String nome, int codigo, ClasseDeUsuario c) {	
+	public void addUsuario(String nome, int codigo, RegraDeEmprestimo c) {	
 		usuarios.add(new Usuario(nome, codigo, c));
 	}
 	

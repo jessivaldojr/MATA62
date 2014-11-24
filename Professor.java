@@ -1,4 +1,4 @@
-public class Professor extends ClasseDeUsuario {
+public class Professor extends RegraDeEmprestimo {
 
 	@Override
 	public StatusRegraEmprestimo verificaRegrasDeEmprestimo(Material m, Usuario usuario) {
