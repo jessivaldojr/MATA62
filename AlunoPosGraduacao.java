@@ -18,7 +18,7 @@ public class AlunoPosGraduacao extends RegraDeEmprestimo {
 		if(usuario.getTotalEmprestimosEmAberto() >= 4) {
 			
 			msg = "Não foi possível realizar o empréstimo. Usuário: " + usuario.getNome() + 
-					" Já possui número máximo de 3 empréstimos!" + fimDeLinha; 
+					" Já possui número máximo de 4 empréstimos!" + fimDeLinha; 
 			
 			return new StatusRegraEmprestimo(false, msg);
 		}

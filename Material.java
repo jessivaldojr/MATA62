@@ -112,7 +112,7 @@ public abstract class Material {
 			
 			cada = (Exemplar) iterator.next();
 			lista += "Código de exemplar: " + cada.getCodigo() + fimDeLinha;
-			lista += cada.getStatus() + fimDeLinha;
+			lista += cada.getStatusString() + fimDeLinha;
 			if(!cada.getStatus()) {
 				lista += "Usuario: " + cada.getNomeUsuario() + fimDeLinha;
 				lista += "Data do Emprestimo: " + cada.getDataEmprestimo() + fimDeLinha;
@@ -151,6 +151,10 @@ public abstract class Material {
 	
 	public int getAno() {
 		return ano;
+	}
+	
+	public int getTotalReservas() {
+		return this.numeroDeReservas;
 	}
 	
 	public abstract String getTipo();

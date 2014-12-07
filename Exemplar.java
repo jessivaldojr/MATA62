@@ -22,6 +22,13 @@ public class Exemplar {
 		return status;
 	}
 	
+	public String getStatusString() {
+		if(status)
+			return "Disponível";
+		
+		return "Emprestado";
+	}
+	
 	public String getNomeUsuario() {
 		if (status)
 			return null;

@@ -171,9 +171,13 @@ public class Biblioteca {
 		if (m != null) {
 			
 			consulta = "Título: " + m.getTitulo() + fimDeLinha;
-				
-			consulta += "Usuários com reservas:" + fimDeLinha;
-			consulta += m.listagemReservas();
+			
+			consulta += "Quantidade de reservas: " + m.getTotalReservas() + fimDeLinha;
+			
+			if(m.getTotalReservas() > 0) {	
+				consulta += "Usuários com reservas:" + fimDeLinha;
+				consulta += m.listagemReservas();
+			}
 						
 			consulta += "Exemplares:" +fimDeLinha;
 			consulta += m.listagemExemplares() + fimDeLinha;

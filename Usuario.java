@@ -224,6 +224,13 @@ public class Usuario {
 																				+ fimDeLinha;
 		}
 		
+		if(getEmprestimoPeloCodigoMaterial(m.getCodigo()) != null) {
+			return "Não foi possível realizar o empréstimo. Usuário " + this.nome + 
+					" já possui um empréstimo em curso de um exemplar do material " + m.getTitulo() + "." 
+					+ fimDeLinha;
+		}
+		
+		
 		return regra.realizaEmprestimo(m, this);
 	}
 
