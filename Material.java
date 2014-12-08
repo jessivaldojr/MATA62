@@ -153,7 +153,7 @@ public abstract class Material {
 		return ano;
 	}
 	
-	public int getTotalReservas() {
+	public int getNumeroDeReservas() {
 		return this.numeroDeReservas;
 	}
 	
